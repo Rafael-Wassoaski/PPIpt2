@@ -5,9 +5,9 @@ from .models import Quiz, Pergunta, Resposta
 class QuizForm(forms.ModelForm):
 	class Meta:
 		model = Quiz
-		fields = ['title', 'descricao', 'numPerguntas']
+		fields = ['titulo', 'descricao', 'numPerguntas']
 		widgets = {
-            'title': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
+            'titulo': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
            	'numPerguntas': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
         }
 

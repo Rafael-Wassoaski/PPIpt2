@@ -5,6 +5,8 @@ from urllib.parse import urlencode
 from .forms import QuizForm, PerguntasForm, RespostaForm
 from .models import Quiz, Pergunta, Resposta
 from django.forms.formsets import formset_factory
+from django.views.generic import CreateView
+from django.contrib.auth.decorators import login_required
 
 	# Create your views here.
 
@@ -43,9 +45,9 @@ def mostrarPontos(request):
 
 	return render(request,'quiz/HTML/mostrarPontos.html', {'pontos':pontos})
 
-
+@login_required
 def CreateQuiz(request):
-	quizForm = QuizForm()
+	quizForm = QuizCreateView()
 	if request.method == "POST":
 		quiz = QuizForm(request.POST)
 
@@ -61,10 +63,9 @@ def CreateQuiz(request):
 			url = '{}?{}'.format(urlBase, quizPk)
 			return redirect(url)
 
-	return render(request, 'quiz/HTML/createQuiz.html', {'quizForm':quizForm,})
+	return render(request, 'quiz/HTML/quiz_form.html', {'quizForm':quizForm,})
 
-
-
+@login_required
 def CreatePerguntas(request):
 	pkQuiz = request.GET.get('quiz')
 	quantidade = int(request.GET.get('quantidade'))
@@ -93,6 +94,11 @@ def CreatePerguntas(request):
 	    	return redirect('quiz:quizList')
 
 	return render(request, 'quiz/HTML/createPerguntas.html', {'pergunta': perguntaForm, 'resposta':respostaForm})
+
+
+class QuizCreateView(CreateView):
+	model = Quiz
+	fields = ('titulo', 'descricao', 'categoria', 'numPerguntas')
 
 
 

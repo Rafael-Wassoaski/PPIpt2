@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'quiz', 
     'accounts',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,7 @@ LOGOUT_REDIRECT_URL = 'blog:post_list'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 AUTH_USER_MODEL = 'accounts.CustomUser'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 

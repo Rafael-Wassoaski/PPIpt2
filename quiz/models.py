@@ -7,7 +7,7 @@ from django.conf import settings
 
 class Quiz(models.Model):
 	    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
-	    title =  models.CharField(max_length = 50)
+	    titulo =  models.CharField(max_length = 50)
 	    descricao = models.TextField()
 	    CATEGORIA=(
 	        ('AV', 'Aventura'),
