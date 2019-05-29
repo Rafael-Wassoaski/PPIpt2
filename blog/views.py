@@ -135,7 +135,7 @@ def createChar(request):
     formPer = PericiasForm()
     
     if request.method == "POST":
-        char = CharacterForm(request.POST)
+        char = CharacterForm(request.POST, request.FILES)
         per = PericiasForm(request.POST)
         if char.is_valid() and per.is_valid():
             char = char.save(commit = False)

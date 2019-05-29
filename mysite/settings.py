@@ -74,12 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-LOGIN_REDIRECT_URL = 'blog:post_list'
-LOGOUT_REDIRECT_URL = 'blog:post_list'
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
-AUTH_USER_MODEL = 'accounts.CustomUser'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -140,8 +135,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
- 
 
-MEDIA_URL = '/media/' 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mysite')
+LOGIN_REDIRECT_URL = 'blog:post_list'
+LOGOUT_REDIRECT_URL = 'blog:post_list'
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+AUTH_USER_MODEL = 'accounts.CustomUser'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
