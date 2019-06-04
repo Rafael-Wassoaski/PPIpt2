@@ -1,6 +1,8 @@
 from django import forms
 
 from .models import Character, Pericias, Post, RespostaPost, Aventura
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit, Row, Column, Reset
 # RespostaRespotaPost
 
 class CharacterForm(forms.ModelForm):
@@ -60,10 +62,28 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'text', 'categoria',)
-        widgets = {
-            'title': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
+        # widgets = {
+        #     'title': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
 
-        }
+        # }
+    def __init__(self, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            Row(
+                
+                Column('title', css_class='form-group col-md-4 col-md-offset-4'),
+                Column('text', css_class='form-group col-md-12'),
+                Column('categoria', css_class='form-group col-md-12'),
+                css_class='form-row'
+            ),
+            
+        )
+        self.helper.add_input(Submit('submit', 'Postar'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+
+
 
 class RespostaForm(forms.ModelForm):
     class Meta:
@@ -79,4 +99,24 @@ class AventuraForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['author', 'create_date']
  
+
+class ContatoForm(forms.Form):
+    emissor = forms.EmailField(required=True, label='Remetente')
+    assunto = forms.CharField(required=True)
+    msg = forms.CharField(widget=forms.Textarea, label='Mensagem')
+
+    def __init__(self, *args, **kwargs):
+        super(ContatoForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            Row(
+                Column('emissor', css_class='form-group col-md-6'),
+                Column('assunto', css_class='form-group col-md-6'),
+                css_class='form-row'
+            ),
+            'msg'
+        )
+        self.helper.add_input(Submit('submit', 'Enviar'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
 

@@ -3,7 +3,12 @@ from .models import Post, Character, Pericias, Aventura
 from django.utils import timezone
 from urllib.parse import urlencode
 from django.urls import reverse
-from .forms import CharacterForm, PericiasForm, PostForm, RespostaForm, RespostaPost, AventuraForm
+from .forms import CharacterForm, PericiasForm, PostForm, RespostaForm, RespostaPost, AventuraForm, ContatoForm
+
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail, BadHeaderError
 
 
 def post_list(request):
@@ -172,13 +177,17 @@ def contato(request):
             emissor = email_form.cleaned_data['emissor']
             assunto = email_form.cleaned_data['assunto']
             msg = email_form.cleaned_data['msg']
+            
 
             try:
-                send_mail(assunto, msg, emissor, ['alexandreabreu@comp.ufla.br'])
+                send_mail(assunto, msg, emissor, ['meireles4815@gmail.com'])
             except BadHeaderError:
                 return HttpResponse("Erro =/")
+            return redirect('blog:post_list')
             
-    return render(request, 'blog/contato.html', {'form': email_form})
+    return render(request, 'blog/HTML/contato.html', {'form': email_form})
+
+
 
 
 
