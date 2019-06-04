@@ -163,6 +163,23 @@ def charDetails(request, pk):
     pericias = Pericias.objects.get(character = pk)
     return render(request, 'blog/HTML/charDetails.html', {'char':char, 'per': pericias})
 
+def contato(request):
+    if request.method == 'GET':
+        email_form = ContatoForm()
+    else:
+        email_form = ContatoForm(request.POST)
+        if email_form.is_valid():
+            emissor = email_form.cleaned_data['emissor']
+            assunto = email_form.cleaned_data['assunto']
+            msg = email_form.cleaned_data['msg']
+
+            try:
+                send_mail(assunto, msg, emissor, ['alexandreabreu@comp.ufla.br'])
+            except BadHeaderError:
+                return HttpResponse("Erro =/")
+            
+    return render(request, 'blog/contato.html', {'form': email_form})
+
 
 
 
