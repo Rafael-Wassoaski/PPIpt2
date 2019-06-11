@@ -1,16 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block content %}
-	
-	<div id = "formPost">
-		<form method="POST">{% csrf_token %}
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">				
-			{{respostaForm}}
-			</div>
-			</br>
-			<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" >Save</button>
-		</form>
-	</div>
-
+	{% crispy respostaForm %}
 {% endblock %}

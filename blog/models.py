@@ -5,8 +5,8 @@ from django.conf import settings
 class Post(models.Model):
     """docstring for Post."""
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
-    title =  models.CharField(max_length = 200)
-    text = models.TextField()
+    title =  models.CharField( 'Título' ,max_length = 200)
+    text = models.TextField('Postagem')
     create_date = models.DateTimeField(blank = True, null = True)
     CATEGORIA=(
         ('AV', 'Aventura'),
@@ -15,8 +15,8 @@ class Post(models.Model):
         ('FC', 'Ficha'),
         ('TM', 'Tema Livre'),
         )
-    categoria = models.CharField(max_length=2, choices=CATEGORIA, default='AV')
-    image = models.ImageField(upload_to = 'images/', blank = True, default = None)
+    categoria = models.CharField('Categoria' ,max_length=2, choices=CATEGORIA, default='AV')
+    image = models.ImageField('Capa' ,upload_to = 'images/', blank = True, default = None)
     create_date = models.DateTimeField(blank = True, null = True)
 
     def publish(self):

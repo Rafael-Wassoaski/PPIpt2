@@ -74,10 +74,17 @@ class PostForm(forms.ModelForm):
             Row(
                 
                 Column('title', css_class='form-group col-md-4 col-md-offset-4'),
-                Column('text', css_class='form-group col-md-12'),
-                Column('categoria', css_class='form-group col-md-12'),
+                Column('categoria', css_class='form-group col-md-2'),
+                
                 css_class='form-row'
             ),
+
+            Row(
+                Column('text', css_class='form-group col-md-6'),
+                css_class='form-row'
+                ),
+
+            
             
         )
         self.helper.add_input(Submit('submit', 'Postar'))
@@ -89,6 +96,27 @@ class RespostaForm(forms.ModelForm):
     class Meta:
         model = RespostaPost
         fields = ('resposta', )
+
+
+    def __init__(self, *args, **kwargs):
+        super(RespostaForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            Row(
+                
+                Column('resposta', css_class='form-group col-md-4 col-md-offset-4'),
+               
+                
+                css_class='form-row'
+            ),
+
+
+            
+            
+        )
+        self.helper.add_input(Submit('submit', 'Postar'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
   
 
 
@@ -98,6 +126,27 @@ class AventuraForm(forms.ModelForm):
         model = Aventura
         fields = '__all__'
         exclude = ['author', 'create_date']
+
+    def __init__(self, *args, **kwargs):
+        super(AventuraForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            Row(
+                
+                Column('titulo', css_class='form-group col-md-4 col-md-offset-4'),
+                Column('titulo', css_class='form-group col-md-4 col-md-offset-4'),
+               
+                
+                css_class='form-row'
+            ),
+
+
+            
+            
+        )
+        self.helper.add_input(Submit('submit', 'Postar'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
  
 
 class ContatoForm(forms.Form):
