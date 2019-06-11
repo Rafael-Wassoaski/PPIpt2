@@ -1,17 +1,10 @@
-{% extends 'base.html' %}%}
+{% extends 'base.html' %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-	<div id= "formPost">
-		<form method="POST">{% csrf_token %}
-			 
-			 	<legend>Criar Aventura</legend>
-			{{aventuraForm.as_p}}
+	
+				{% crispy aventuraForm %}
 			
-
-			<button type="submit">Save</button>
-		</form>
-	</div>
-
-
+		
 {% endblock %}

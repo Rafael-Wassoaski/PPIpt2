@@ -1,19 +1,13 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-	<div id= "formPost">
-		<form method="POST" enctype="multipart/form-data">
-			{% csrf_token %}
-
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				{{fomularioChar.as_ul}}
-				{{formularioPer.as_ul}}
-			</div>
-			</br>
-			<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" >Salvar</button>
-		</form>
-	</div>
-
-
+	<!-- <div id= "formPost"> -->
+				<!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"> -->
+				{% crispy fomularioChar %}
+			
+			<!-- </div> -->
+			
+	<!-- </div> -->
 {% endblock %}

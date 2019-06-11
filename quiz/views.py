@@ -28,7 +28,6 @@ def fazerQuiz(request, pkQuiz):
 			resp = request.POST.get(str(pergunta.pergunta), '')
 			respCorreta = Resposta.objects.get(pergunta = pergunta)
 			if respCorreta.resposta == resp:
-				print('a')
 				pontos = pontos + 1
 											
 		urlBase = reverse('quiz:pontuacao')
@@ -47,7 +46,7 @@ def mostrarPontos(request):
 
 @login_required
 def CreateQuiz(request):
-	quizForm = QuizCreateView()
+	quizForm = QuizForm()
 	if request.method == "POST":
 		quiz = QuizForm(request.POST)
 

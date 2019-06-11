@@ -103,18 +103,6 @@ class Character(models.Model):
     iniciativa = models.IntegerField(default = 0)
     deslocamento = models.IntegerField(default = 2)
     rosto = models.ImageField(upload_to='images/', blank = True,default = None)
-
-
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return self.name
-
-
-class Pericias(models.Model):
     character = models.IntegerField()
     acrobacia = models.IntegerField(default = 0)
     atletismo = models.IntegerField(default = 0)
@@ -132,7 +120,8 @@ class Pericias(models.Model):
     religiao = models.IntegerField(default = 0)
     socorro = models.IntegerField(default = 0)
     tolerancia = models.IntegerField(default = 0)
-   
+
+
 
     def publish(self):
         self.published_date = timezone.now()
@@ -140,6 +129,34 @@ class Pericias(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# class Pericias(models.Model):
+#     character = models.IntegerField()
+#     acrobacia = models.IntegerField(default = 0)
+#     atletismo = models.IntegerField(default = 0)
+#     blefe = models.IntegerField(default = 0)
+#     diplomacia = models.IntegerField(default = 0)
+#     exploracao = models.IntegerField(default = 0)
+#     furtividade = models.IntegerField(default = 0)
+#     historia = models.IntegerField(default = 0)
+#     intimidacao = models.IntegerField(default = 0)
+#     intuicao = models.IntegerField(default = 0)
+#     ladinagem = models.IntegerField(default = 0)
+#     manha = models.IntegerField(default = 0)
+#     natureza = models.IntegerField(default = 0)
+#     percepcao = models.IntegerField(default = 0)
+#     religiao = models.IntegerField(default = 0)
+#     socorro = models.IntegerField(default = 0)
+#     tolerancia = models.IntegerField(default = 0)
+   
+
+#     def publish(self):
+#         self.published_date = timezone.now()
+#         self.save()
+
+#     def __str__(self):
+#         return self.name
 
 class Aventura(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)

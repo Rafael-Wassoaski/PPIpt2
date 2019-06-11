@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Post, Character, Pericias, Aventura
+from .models import Post, Character, Aventura
 from django.utils import timezone
 from urllib.parse import urlencode
 from django.urls import reverse
-from .forms import CharacterForm, PericiasForm, PostForm, RespostaForm, RespostaPost, AventuraForm, ContatoForm
+from .forms import CharacterForm, PostForm, RespostaForm, RespostaPost, AventuraForm, ContatoForm
 
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, JsonResponse
@@ -137,24 +137,20 @@ def postCreate(request):
 
 def createChar(request):
     formChar = CharacterForm()
-    formPer = PericiasForm()
+    # formPer = PericiasForm()
     
     if request.method == "POST":
         char = CharacterForm(request.POST, request.FILES)
         per = PericiasForm(request.POST)
-        if char.is_valid() and per.is_valid():
+        if char.is_valid():
             char = char.save(commit = False)
             char.author = request.user
             char.published_date = timezone.now()
             char.save()
-            per = per.save(commit = False)
-            per.published_date = timezone.now();
-            per.character = char.pk
-            per.save()
             return redirect('blog:post_list')
 
 
-    return render(request, 'blog/HTML/createChar.html', {'fomularioChar':formChar,'formularioPer': formPer})
+    return render(request, 'blog/HTML/createChar.html', {'fomularioChar':formChar,})
 
 
 def charList(request):

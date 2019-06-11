@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Character, Pericias, Post, RespostaPost, Aventura
+from .models import Character, Post, RespostaPost, Aventura
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Reset
 # RespostaRespotaPost
@@ -11,52 +11,113 @@ class CharacterForm(forms.ModelForm):
         model = Character
         fields =   '__all__'
         exclude = ['author']
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
-            'classe': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
-            'tamanho': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'idade': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'olhos': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
-            'cabelo': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
-            'pele': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
-            'divindade': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
-            'forca': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'constituicao': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'destreza': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'inteligencia': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'sabedoria': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'carisma': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'pontosDeVida': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'iniciativa': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-            'deslocamento': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-        }
+        def __init__(self, *args, **kwargs):
+	        super(CharacterForm, self).__init__(*args, **kwargs)
+	        self.helper = FormHelper(self)
+	        self.helper.form_method = 'POST'
+	        self.helper.layout = Layout(
+	            Row(
+	                
+	                Column('name', css_class='form-group col-md-3 col-md-offset-3'),
+	            	Column('classe', css_class='form-group col-md-3 col-md-offset-3'),   
+	            	Column('raca', css_class='form-group col-md-3'),
+	            	Column('sexo', css_class='form-group col-md-3'),         
+	              	css_class='form-row'
+	            ),
+
+	            Row(
+	                Column('tamanho', css_class='form-group col-md-3'),
+	                Column('idade', css_class='form-group col-md-3'),
+	                Column('olhos', css_class='form-group col-md-3'),
+	                Column('cabelo', css_class='form-group col-md-3'),
+	                Column('pele', css_class='form-group col-md-3'),
+	                Column('divindade', css_class='form-group col-md-3'),
+	                Column('forca', css_class='form-group col-md-3'),
+	                Column('constituicao', css_class='form-group col-md-3'),
+	                Column('destreza', css_class='form-group col-md-3'),
+	                Column('inteligencia', css_class='form-group col-md-3'),
+	                Column('carisma', css_class='form-group col-md-3'),
+	                Column('pontosDeVida', css_class='form-group col-md-3'),
+	                Column('iniciativa', css_class='form-group col-md-3'),
+	                Column('deslocamento', css_class='form-group col-md-3'),
+
+	                css_class='form-row'
+	                ),
 
 
-class PericiasForm(forms.ModelForm):
-    """docstring for CharacterForm."""
-    class Meta:
-        model = Pericias
-        fields =   '__all__'
-        exclude = ['character']
-        widgets = {
-         'acrobacia': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'atletismo': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'blefe': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'diplomacia': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'exploracao': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'furtividade': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'historia': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'intimidacao': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'intuicao': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'ladinagem': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'manha': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'natureza': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'percepcao': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'religiao': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'socorro': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
-         'tolerancia': forms.TextInput(attrs={'class': 'mdl-textfield__input', 'pattern':'-?[0-9]*(\.[0-9]+)?'}),
+	            Row(
+	                Column('acrobacia', css_class='form-group col-md-2'),
+	                Column('atletismo', css_class='form-group col-md-2'),
+	                Column('blefe', css_class='form-group col-md-2'),
+	                Column('diplomacia', css_class='form-group col-md-2'),
+	                Column('exploracao', css_class='form-group col-md-2'),
+	                Column('furtividade', css_class='form-group col-md-4'),
+	                Column('historia', css_class='form-group col-md-2'),
+	                Column('intimidacao', css_class='form-group col-md-2'),
+	                Column('intuicao', css_class='form-group col-md-2'),
+	                Column('ladinagem', css_class='form-group col-md-2'),
+	                Column('manha', css_class='form-group col-md-2'),
+	                Column('natureza', css_class='form-group col-md-2'),
+	                Column('percepcao', css_class='form-group col-md-2'),
+	                Column('religiao', css_class='form-group col-md-2'),
+	                Column('socorro', css_class='form-group col-md-2'),
+	                Column('tolerancia', css_class='form-group col-md-2'),
 
-        }
+	                css_class='form-row'
+	                ),
+
+	            
+	            
+	        )
+	       	self.helper.add_input(Submit('submit', 'Postar'))
+        	self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+        
+
+
+# class PericiasForm(forms.ModelForm):
+#     class Meta:
+#         model = Pericias
+#         fields =   '__all__'
+#         exclude = ['character']
+
+#         def __init__(self, *args, **kwargs):
+# 	        super(CharacterForm, self).__init__(*args, **kwargs)
+# 	        self.helper = FormHelper(self)
+# 	        self.helper.form_method = 'post'
+# 	        self.helper.layout = Layout(
+# 	            Row(
+	                
+# 	                Column('name', css_class='form-group col-md-4'),
+# 	            	Column('classe', css_class='form-group col-md-4'),            
+# 	              	css_class='form-row'
+# 	            ),
+
+# 	            Row(
+# 	                Column('acrobacia', css_class='form-group col-md-2'),
+# 	                Column('atletismo', css_class='form-group col-md-2'),
+# 	                Column('blefe', css_class='form-group col-md-2'),
+# 	                Column('diplomacia', css_class='form-group col-md-2'),
+# 	                Column('exploracao', css_class='form-group col-md-2'),
+# 	                Column('furtividade', css_class='form-group col-md-4'),
+# 	                Column('historia', css_class='form-group col-md-2'),
+# 	                Column('intimidacao', css_class='form-group col-md-2'),
+# 	                Column('intuicao', css_class='form-group col-md-2'),
+# 	                Column('ladinagem', css_class='form-group col-md-2'),
+# 	                Column('manha', css_class='form-group col-md-2'),
+# 	                Column('natureza', css_class='form-group col-md-2'),
+# 	                Column('percepcao', css_class='form-group col-md-2'),
+# 	                Column('religiao', css_class='form-group col-md-2'),
+# 	                Column('socorro', css_class='form-group col-md-2'),
+# 	                Column('tolerancia', css_class='form-group col-md-2'),
+
+# 	                css_class='form-row'
+# 	                ),
+
+	            
+	            
+# 	        )
+# 	        self.helper.add_input(Submit('submit', 'Postar'))
+#        		self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -69,7 +130,7 @@ class PostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-        self.helper.form_method = 'post'
+        self.helper.form_method = 'POST'
         self.helper.layout = Layout(
             Row(
                 
@@ -101,7 +162,7 @@ class RespostaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RespostaForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-        self.helper.form_method = 'post'
+        self.helper.form_method = 'POST'
         self.helper.layout = Layout(
             Row(
                 
@@ -130,14 +191,28 @@ class AventuraForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(AventuraForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-        self.helper.form_method = 'post'
+        self.helper.form_method = 'POST'
         self.helper.layout = Layout(
             Row(
                 
                 Column('titulo', css_class='form-group col-md-4 col-md-offset-4'),
-                Column('titulo', css_class='form-group col-md-4 col-md-offset-4'),
+                    
+                css_class='form-row'
+            ),
+             Row(
+                Column('aventura', css_class='form-group col-md-4 col-md-offset-8'),
                
-                
+                css_class='form-row'
+            ),
+
+            Row(
+                Column('genero', css_class='form-group col-md-6 col-md-offset-6'),
+              	Column('numeroJogadores', css_class='form-group col-md-6 col-md-offset-6'),
+                css_class='form-row'
+            ),
+            Row(
+                Column('npcs', css_class='form-group col-md-4 col-md-offset-4'),
+              	
                 css_class='form-row'
             ),
 
