@@ -95,9 +95,7 @@ def CreatePerguntas(request):
 	return render(request, 'quiz/HTML/createPerguntas.html', {'pergunta': perguntaForm, 'resposta':respostaForm})
 
 
-class QuizCreateView(CreateView):
-	model = Quiz
-	fields = ('titulo', 'descricao', 'categoria', 'numPerguntas')
+
 
 
 

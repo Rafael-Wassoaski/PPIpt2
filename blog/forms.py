@@ -11,66 +11,66 @@ class CharacterForm(forms.ModelForm):
         model = Character
         fields =   '__all__'
         exclude = ['author']
-        def __init__(self, *args, **kwargs):
-	        super(CharacterForm, self).__init__(*args, **kwargs)
-	        self.helper = FormHelper(self)
-	        self.helper.form_method = 'POST'
-	        self.helper.layout = Layout(
-	            Row(
-	                
-	                Column('name', css_class='form-group col-md-3 col-md-offset-3'),
-	            	Column('classe', css_class='form-group col-md-3 col-md-offset-3'),   
-	            	Column('raca', css_class='form-group col-md-3'),
-	            	Column('sexo', css_class='form-group col-md-3'),         
-	              	css_class='form-row'
-	            ),
+    def __init__(self, *args, **kwargs):
+        super(CharacterForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'POST'
+        self.helper.layout = Layout(
+            Row(
+                
+                Column('name', css_class='form-group col-md-3 col-md-offset-3'),
+            	Column('classe', css_class='form-group col-md-3 col-md-offset-3'),   
+            	Column('raca', css_class='form-group col-md-3'),
+            	Column('sexo', css_class='form-group col-md-3'),         
+              	css_class='form-row'
+            ),
 
-	            Row(
-	                Column('tamanho', css_class='form-group col-md-3'),
-	                Column('idade', css_class='form-group col-md-3'),
-	                Column('olhos', css_class='form-group col-md-3'),
-	                Column('cabelo', css_class='form-group col-md-3'),
-	                Column('pele', css_class='form-group col-md-3'),
-	                Column('divindade', css_class='form-group col-md-3'),
-	                Column('forca', css_class='form-group col-md-3'),
-	                Column('constituicao', css_class='form-group col-md-3'),
-	                Column('destreza', css_class='form-group col-md-3'),
-	                Column('inteligencia', css_class='form-group col-md-3'),
-	                Column('carisma', css_class='form-group col-md-3'),
-	                Column('pontosDeVida', css_class='form-group col-md-3'),
-	                Column('iniciativa', css_class='form-group col-md-3'),
-	                Column('deslocamento', css_class='form-group col-md-3'),
+            Row(
+                Column('tamanho', css_class='form-group col-md-3'),
+                Column('idade', css_class='form-group col-md-3'),
+                Column('olhos', css_class='form-group col-md-3'),
+                Column('cabelo', css_class='form-group col-md-3'),
+                Column('pele', css_class='form-group col-md-3'),
+                Column('divindade', css_class='form-group col-md-3'),
+                Column('forca', css_class='form-group col-md-3'),
+                Column('constituicao', css_class='form-group col-md-3'),
+                Column('destreza', css_class='form-group col-md-3'),
+                Column('inteligencia', css_class='form-group col-md-3'),
+                Column('carisma', css_class='form-group col-md-3'),
+                Column('pontosDeVida', css_class='form-group col-md-3'),
+                Column('iniciativa', css_class='form-group col-md-3'),
+                Column('deslocamento', css_class='form-group col-md-3'),
 
-	                css_class='form-row'
-	                ),
+                css_class='form-row'
+                ),
 
 
-	            Row(
-	                Column('acrobacia', css_class='form-group col-md-2'),
-	                Column('atletismo', css_class='form-group col-md-2'),
-	                Column('blefe', css_class='form-group col-md-2'),
-	                Column('diplomacia', css_class='form-group col-md-2'),
-	                Column('exploracao', css_class='form-group col-md-2'),
-	                Column('furtividade', css_class='form-group col-md-4'),
-	                Column('historia', css_class='form-group col-md-2'),
-	                Column('intimidacao', css_class='form-group col-md-2'),
-	                Column('intuicao', css_class='form-group col-md-2'),
-	                Column('ladinagem', css_class='form-group col-md-2'),
-	                Column('manha', css_class='form-group col-md-2'),
-	                Column('natureza', css_class='form-group col-md-2'),
-	                Column('percepcao', css_class='form-group col-md-2'),
-	                Column('religiao', css_class='form-group col-md-2'),
-	                Column('socorro', css_class='form-group col-md-2'),
-	                Column('tolerancia', css_class='form-group col-md-2'),
+            Row(
+                Column('acrobacia', css_class='form-group col-md-2'),
+                Column('atletismo', css_class='form-group col-md-2'),
+                Column('blefe', css_class='form-group col-md-2'),
+                Column('diplomacia', css_class='form-group col-md-2'),
+                Column('exploracao', css_class='form-group col-md-2'),
+                Column('furtividade', css_class='form-group col-md-4'),
+                Column('historia', css_class='form-group col-md-2'),
+                Column('intimidacao', css_class='form-group col-md-2'),
+                Column('intuicao', css_class='form-group col-md-2'),
+                Column('ladinagem', css_class='form-group col-md-2'),
+                Column('manha', css_class='form-group col-md-2'),
+                Column('natureza', css_class='form-group col-md-2'),
+                Column('percepcao', css_class='form-group col-md-2'),
+                Column('religiao', css_class='form-group col-md-2'),
+                Column('socorro', css_class='form-group col-md-2'),
+                Column('tolerancia', css_class='form-group col-md-2'),
 
-	                css_class='form-row'
-	                ),
+                css_class='form-row'
+                ),
 
-	            
-	            
-	        )
-	       	self.helper.add_input(Submit('submit', 'Postar'))
-        	self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+            
+            
+        )
+        self.helper.add_input(Submit('submit', 'Postar'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
         
 
 
@@ -143,7 +143,7 @@ class PostForm(forms.ModelForm):
             Row(
                 Column('text', css_class='form-group col-md-6'),
                 css_class='form-row'
-                ),
+            ),
 
             
             
