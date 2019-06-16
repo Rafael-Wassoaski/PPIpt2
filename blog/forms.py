@@ -18,8 +18,8 @@ class CharacterForm(forms.ModelForm):
         self.helper.layout = Layout(
             Row(
                 
-                Column('name', css_class='form-group col-md-3 col-md-offset-3'),
-            	Column('classe', css_class='form-group col-md-3 col-md-offset-3'),   
+                Column('name', css_class='form-group col-md-6 col-md-offset-3'),
+            	Column('classe', css_class='form-group col-md-6 col-md-offset-3'),   
             	Column('raca', css_class='form-group col-md-3'),
             	Column('sexo', css_class='form-group col-md-3'),         
               	css_class='form-row'
@@ -69,7 +69,7 @@ class CharacterForm(forms.ModelForm):
             
             
         )
-        self.helper.add_input(Submit('submit', 'Postar'))
+        self.helper.add_input(Submit('submit', 'Criar'))
         self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
         
 

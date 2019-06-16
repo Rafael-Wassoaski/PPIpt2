@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
+
+
+
+
+
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
 {% block content %}
+
+
 	<!-- <div id= "formPost"> -->
 				<!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"> -->
 				{% crispy fomularioChar %}
@@ -10,4 +17,5 @@
 			<!-- </div> -->
 			
 	<!-- </div> -->
+	<script src="{% static 'js/formsBlog.js' %}"></script>
 {% endblock %}
