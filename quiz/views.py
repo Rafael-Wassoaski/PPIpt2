@@ -8,6 +8,8 @@ from django.forms.formsets import formset_factory
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 
+from django.contrib import messages
+
 	# Create your views here.
 
 def quizList(request):
@@ -31,10 +33,8 @@ def fazerQuiz(request, pkQuiz):
 			if respCorreta == resp:
 				pontos = pontos + 1
 											
-		urlBase = reverse('quiz:pontuacao')
-		pontos = urlencode({'pontos':pontos})
-		url = '{}?{}'.format(urlBase, pontos)
-		return redirect(url)
+		messages.info(request, 'Você fez: {} pontos'.format(pontos) , extra_tags='alert')
+		return redirect('quiz:quizList')
 
 
 	return render(request, 'quiz/HTML/fazerQuiz.html', {'quiz':quiz,'perguntas':perguntas})

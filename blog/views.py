@@ -10,6 +10,8 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
 
+from django.contrib import messages
+
 
 def post_list(request):
     posts = Post.objects.filter(create_date__lte=timezone.now()).order_by('-create_date')
@@ -63,6 +65,7 @@ def createAventura(request):
             aventura.author = request.user
             aventura.create_date = timezone.now()
             aventura.save()
+            messages.success(request, 'Avnetura criado com sucesso', extra_tags='alert')
             return redirect('blog:aventuras_list')
 
     return render(request, 'blog/HTML/createAventura.html', {'aventuraForm':aventuraForm,})
@@ -79,7 +82,8 @@ def createResposta(request, pk):
             resposta.author = request.user
             resposta.published_date = timezone.now()
             resposta.post = Post.objects.get(pk = pk)
-            resposta.save()            
+            resposta.save()
+            messages.success(request, 'Resposta criado com sucesso', extra_tags='alert')            
             return redirect('blog:post_list')
 
 
@@ -100,7 +104,8 @@ def createRespostaResposta(request, pkPost, pkResposta):
             resposta.post = Post.objects.get(pk = pkPost)
             resposta.repostaMain = RespostaPost.objects.get(pk = pkResposta)
             resposta.respResp = True
-            resposta.save()            
+            resposta.save()       
+            messages.success(request, 'Resposta criado com sucesso', extra_tags='alert')               
             return redirect('blog:post_list')
 
 
@@ -125,7 +130,8 @@ def postCreate(request):
             post.author = request.user
             post.create_date = timezone.now()
             post.publish()
-            post.save()            
+            post.save()   
+            messages.success(request, 'Post criado com sucesso', extra_tags='alert')                   
             return redirect('blog:post_list')
 
 
@@ -148,6 +154,7 @@ def createChar(request):
             char.author = request.user
             char.published_date = timezone.now()
             char.save()
+            essages.success(request, 'Personagem criado com sucesso', extra_tags='alert')          
             return redirect('blog:post_list')
 
 
