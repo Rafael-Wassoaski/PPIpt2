@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils import timezone
 from urllib.parse import urlencode
-from .forms import QuizForm, PerguntasForm, RespostaForm
-from .models import Quiz, Pergunta, Resposta
+from .forms import QuizForm, PerguntasForm
+from .models import Quiz, Pergunta
 from django.forms.formsets import formset_factory
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
@@ -18,16 +18,17 @@ def quizList(request):
 def fazerQuiz(request, pkQuiz):
 	quiz = Quiz.objects.get(pk = pkQuiz)
 	perguntas = Pergunta.objects.filter(quiz = quiz)
-	respostasFormSet = formset_factory(RespostaForm, extra=quiz.numPerguntas)
-	formSet = respostasFormSet()
+	# respostasFormSet = formset_factory(RespostaForm, extra=quiz.numPerguntas)
+	# formSet = respostasFormSet()
 	
 	if request.method == "POST":
 		pontos = 0
 
+
 		for pergunta in perguntas:
 			resp = request.POST.get(str(pergunta.pergunta), '')
-			respCorreta = Resposta.objects.get(pergunta = pergunta)
-			if respCorreta.resposta == resp:
+			respCorreta = pergunta.resposta
+			if respCorreta == resp:
 				pontos = pontos + 1
 											
 		urlBase = reverse('quiz:pontuacao')
@@ -36,7 +37,7 @@ def fazerQuiz(request, pkQuiz):
 		return redirect(url)
 
 
-	return render(request, 'quiz/HTML/fazerQuiz.html', {'quiz':quiz,'perguntas':perguntas, 'respostasForm':formSet})
+	return render(request, 'quiz/HTML/fazerQuiz.html', {'quiz':quiz,'perguntas':perguntas})
 
 
 def mostrarPontos(request):
@@ -70,19 +71,15 @@ def CreatePerguntas(request):
 	quantidade = int(request.GET.get('quantidade'))
 	
 	perguntaForm = PerguntasForm()
-	respostaForm= RespostaForm()
 	
 	if request.method == "POST":
 	    pergunta = PerguntasForm(request.POST)
-	    respForm = RespostaForm(request.POST)
 
-	    if pergunta.is_valid() and respForm.is_valid():
+	    if pergunta.is_valid():
 	    	pergunta = pergunta.save(commit = False)
 	    	pergunta.quiz = Quiz.objects.get(pk = pkQuiz)
 	    	pergunta.save()
-	    	respForm = respForm.save(commit = False)
-	    	respForm.pergunta = Pergunta.objects.get(pk = pergunta.pk)
-	    	respForm.save() 
+	
 
 	    	if quantidade - 1 > 0:
 		    	urlBase = reverse('quiz:criarPerguntas')
@@ -92,7 +89,7 @@ def CreatePerguntas(request):
 
 	    	return redirect('quiz:quizList')
 
-	return render(request, 'quiz/HTML/createPerguntas.html', {'pergunta': perguntaForm, 'resposta':respostaForm})
+	return render(request, 'quiz/HTML/createPerguntas.html', {'pergunta': perguntaForm,})
 
 
 

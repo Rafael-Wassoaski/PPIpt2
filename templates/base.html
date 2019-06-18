@@ -55,7 +55,20 @@
 
 					<a class="mdl-navigation__link" href="{% url 'blog:charList' %}">Lista de Personagens</a>
 					<a class="mdl-navigation__link" href="{% url 'blog:aventuras_list' %}">Lista de  Aventuras</a>
-					<a class="mdl-navigation__link" href="{% url 'quiz:quizList' %}">Quiz</a>
+
+					<div class="dropdown">
+
+						<a onclick="myFunction()" class="dropbtn mdl-navigation__link">Quiz</a>
+						<div id="myDropdown" class="dropdown-content">
+							{% if user.is_authenticated %}
+							<a href="{% url 'quiz:CreateQuiz'%}">Criar Quiz</a>
+							{% endif %}
+
+							<a href="{% url 'quiz:quizList' %}">Lista de Quiz</a>
+							
+						</div>
+					</div>
+
 
 					{% if user.is_authenticated %}
 					<a class="mdl-navigation__link" href="{% url 'blog:createAventura' %}">Criar Aventura</a>
@@ -63,6 +76,7 @@
 					<a class="mdl-navigation__link" href="{% url 'blog:createChar' %}">Criar Personagem</a>
 					<a class="mdl-navigation__link" href="{% url 'blog:contato' %}">Enviar Email</a>
 					<a class="mdl-navigation__link" href="{% url 'logout' %}">LogOut</a>
+
 					{% else %}
 					<a class="mdl-navigation__link" href="{% url 'login' %}">Login</a>
 					<a class="mdl-navigation__link" href="{% url 'signup' %}">Cadastrar</a>

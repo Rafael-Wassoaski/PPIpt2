@@ -35,14 +35,14 @@ class Quiz(models.Model):
 class Pergunta(models.Model):
 		quiz = models.ForeignKey(Quiz, on_delete = models.CASCADE)
 		pergunta = models.TextField()
-		
+		resposta = models.CharField(max_length = 200)		
 
 
 		
 
 
-class Resposta(models.Model):
-	pergunta = models.ForeignKey(Pergunta, on_delete = models.CASCADE)
-	resposta = models.CharField(max_length = 200)
+# class Resposta(models.Model):
+# 	pergunta = models.ForeignKey(Pergunta, on_delete = models.CASCADE)
+# 	resposta = models.CharField(max_length = 200)
 	
 

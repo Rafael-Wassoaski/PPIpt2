@@ -1,6 +1,5 @@
 from django import forms
-
-from .models import Quiz, Pergunta, Resposta
+from .models import Quiz, Pergunta
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Reset
 
@@ -26,7 +25,7 @@ class QuizForm(forms.ModelForm):
 			css_class='form-row'
 			),
 		)
-		self.helper.add_input(Submit('submit', 'Postar'))
+		self.helper.add_input(Submit('submit', 'Criar Perguntas'))
 		self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
 
 
@@ -34,7 +33,7 @@ class QuizForm(forms.ModelForm):
 class PerguntasForm(forms.ModelForm):
 	class Meta:
 		model = Pergunta
-		fields = ['pergunta']
+		fields = ['pergunta', 'resposta']
 		exclude = ['quiz',]
 	def __init__(self, *args, **kwargs):
 		super(PerguntasForm, self).__init__(*args, **kwargs)
@@ -44,26 +43,6 @@ class PerguntasForm(forms.ModelForm):
 			Row(
 
 			Column('pergunta', css_class='form-group col-md-6 col-md-offset-6'),
-			
-			css_class='form-row'
-			),
-
-			
-		)
-		self.helper.add_input(Submit('submit', 'Postar'))
-		self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
-
-class RespostaForm(forms.ModelForm):
-	class Meta:
-		model = Resposta
-		fields = ['resposta']
-	def __init__(self, *args, **kwargs):
-		super(RespostaForm, self).__init__(*args, **kwargs)
-		self.helper = FormHelper(self)
-		self.helper.form_method = 'POST'
-		self.helper.layout = Layout(
-			Row(
-
 			Column('resposta', css_class='form-group col-md-6 col-md-offset-6'),
 			
 			css_class='form-row'
@@ -73,6 +52,27 @@ class RespostaForm(forms.ModelForm):
 		)
 		self.helper.add_input(Submit('submit', 'Postar'))
 		self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+
+# class RespostaForm(forms.ModelForm):
+# 	class Meta:
+# 		model = Resposta
+# 		fields = ['resposta']
+# 	def __init__(self, *args, **kwargs):
+# 		super(RespostaForm, self).__init__(*args, **kwargs)
+# 		self.helper = FormHelper(self)
+# 		self.helper.form_method = 'POST'
+# 		self.helper.layout = Layout(
+# 			Row(
+
+# 			Column('resposta', css_class='form-group col-md-6 col-md-offset-6'),
+			
+# 			css_class='form-row'
+# 			),
+
+			
+# 		)
+# 		self.helper.add_input(Submit('submit', 'Postar'))
+# 		self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
 
 
 

@@ -139,11 +139,11 @@ def createChar(request):
     formChar = CharacterForm()
     # formPer = PericiasForm()
     
-    if request.method == "POST":
+    if request.method == "post":
         char = CharacterForm(request.POST, request.FILES)
-        per = PericiasForm(request.POST)
         if char.is_valid():
             char = char.save(commit = False)
+            print("valido")
             char.author = request.user
             char.published_date = timezone.now()
             char.save()
@@ -161,8 +161,8 @@ def charList(request):
 
 def charDetails(request, pk):
     char = Character.objects.get(pk = pk)
-    pericias = Pericias.objects.get(character = pk)
-    return render(request, 'blog/HTML/charDetails.html', {'char':char, 'per': pericias})
+ 
+    return render(request, 'blog/HTML/charDetails.html', {'char':char, })
 
 def contato(request):
     if request.method == 'GET':

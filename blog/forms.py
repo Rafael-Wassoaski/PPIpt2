@@ -14,7 +14,7 @@ class CharacterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CharacterForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-        self.helper.form_method = 'POST'
+        self.helper.form_method = "POST"
         self.helper.layout = Layout(
             Row(
                 

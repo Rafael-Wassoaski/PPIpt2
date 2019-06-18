@@ -1,4 +1,4 @@
-{% extends 'quiz/HTML/base.html' %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 
 {% block content %}
@@ -9,7 +9,6 @@
 		
 		<form method="POST">{% csrf_token %}
 
-			{{respostasForm.management_form }}
 			{% for pergunta in perguntas %}
 
 			<div id='pergunta'>
