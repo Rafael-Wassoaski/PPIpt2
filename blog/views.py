@@ -138,12 +138,13 @@ def postCreate(request):
 def createChar(request):
     formChar = CharacterForm()
     # formPer = PericiasForm()
-    
-    if request.method == "post":
+    if request.method == "POST":
+
         char = CharacterForm(request.POST, request.FILES)
+        print(char.errors)
         if char.is_valid():
             char = char.save(commit = False)
-            print("valido")
+            
             char.author = request.user
             char.published_date = timezone.now()
             char.save()

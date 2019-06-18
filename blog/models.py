@@ -103,7 +103,6 @@ class Character(models.Model):
     iniciativa = models.IntegerField(default = 0)
     deslocamento = models.IntegerField(default = 2)
     rosto = models.ImageField(upload_to='images/', blank = True,default = None)
-    character = models.IntegerField()
     acrobacia = models.IntegerField(default = 0)
     atletismo = models.IntegerField(default = 0)
     blefe = models.IntegerField(default = 0)

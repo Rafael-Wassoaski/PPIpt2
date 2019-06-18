@@ -33,7 +33,7 @@ class QuizForm(forms.ModelForm):
 class PerguntasForm(forms.ModelForm):
 	class Meta:
 		model = Pergunta
-		fields = ['pergunta', 'resposta']
+		fields = ['pergunta', 'resposta','dica']
 		exclude = ['quiz',]
 	def __init__(self, *args, **kwargs):
 		super(PerguntasForm, self).__init__(*args, **kwargs)
@@ -45,6 +45,11 @@ class PerguntasForm(forms.ModelForm):
 			Column('pergunta', css_class='form-group col-md-6 col-md-offset-6'),
 			Column('resposta', css_class='form-group col-md-6 col-md-offset-6'),
 			
+			css_class='form-row'
+			),
+			Row(
+
+			Column('dica', css_class='form-group col-md-6 col-md-offset-6'),
 			css_class='form-row'
 			),
 

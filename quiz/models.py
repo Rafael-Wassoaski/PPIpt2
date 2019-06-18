@@ -35,7 +35,8 @@ class Quiz(models.Model):
 class Pergunta(models.Model):
 		quiz = models.ForeignKey(Quiz, on_delete = models.CASCADE)
 		pergunta = models.TextField()
-		resposta = models.CharField(max_length = 200)		
+		resposta = models.CharField(max_length = 200)
+		dica = models.TextField(blank = True, default='Sem dica')		
 
 
 		
