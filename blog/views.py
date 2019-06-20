@@ -65,9 +65,9 @@ def createAventura(request):
             aventura.author = request.user
             aventura.create_date = timezone.now()
             aventura.save()
-            messages.success(request, 'Avnetura criado com sucesso', extra_tags='alert')
+            messages.success(request, 'Aventura criado com sucesso', extra_tags='alert')
             return redirect('blog:aventuras_list')
-
+        messages.warning(request, 'Erro ao criar aventura', extra_tags='alert')
     return render(request, 'blog/HTML/createAventura.html', {'aventuraForm':aventuraForm,})
 
 
@@ -85,6 +85,7 @@ def createResposta(request, pk):
             resposta.save()
             messages.success(request, 'Resposta criado com sucesso', extra_tags='alert')            
             return redirect('blog:post_list')
+        messages.su(request, 'Números negativos são invalidos', extra_tags='alert')
 
 
 
@@ -154,7 +155,7 @@ def createChar(request):
             char.author = request.user
             char.published_date = timezone.now()
             char.save()
-            essages.success(request, 'Personagem criado com sucesso', extra_tags='alert')          
+            messages.success(request, 'Personagem criado com sucesso', extra_tags='alert')          
             return redirect('blog:post_list')
 
 
@@ -186,10 +187,17 @@ def contato(request):
             try:
                 send_mail(assunto, msg, emissor, ['meireles4815@gmail.com'])
             except BadHeaderError:
-                return HttpResponse("Erro =/")
+                return HttpResponse("Erro")
             return redirect('blog:post_list')
             
     return render(request, 'blog/HTML/contato.html', {'form': email_form})
+
+
+def visitas(request, pk):
+    aventura = Aventura.objects.get(pk = pk)
+    return aventura.visitas
+    
+
 
 
 

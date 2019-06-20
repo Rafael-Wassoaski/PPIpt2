@@ -26,17 +26,17 @@ class CharacterForm(forms.ModelForm):
             ),
              Row(
                 
-                Column('tamanho', css_class='form-group col-md-6 col-md-offset-3'),
-                Column('idade', css_class='form-group col-md-6 col-md-offset-3'),   
-                Column('altura', css_class='form-group col-md-3'),
-                Column('peso', css_class='form-group col-md-3'),         
+                Column('tamanho', css_class='form-group col-sm-6 col-sm-offset-3'),
+                Column('idade', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('altura', css_class='form-group col-sm-3'),
+                Column('peso', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
 
               Row(
                 
-                Column('olhos', css_class='form-group col-md-6 col-md-offset-3'),
-                Column('cabelo', css_class='form-group col-md-6 col-md-offset-3'),   
+                Column('olhos', css_class='form-group col-md-3 col-md-offset-3'),
+                Column('cabelo', css_class='form-group col-md-3 col-md-offset-3'),   
                 Column('pele', css_class='form-group col-md-3'),
                 Column('divindade', css_class='form-group col-md-3'),         
                 css_class='form-row'
@@ -46,8 +46,8 @@ class CharacterForm(forms.ModelForm):
                 
                 Column('tendencia', css_class='form-group col-md-6 col-md-offset-3'),
                  
-                Column('forca', css_class='form-group col-md-3'),
-                Column('constituicao', css_class='form-group col-md-3'),         
+                Column('forca', css_class='form-group col-sm-3'),
+                Column('constituicao', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
 
@@ -58,50 +58,50 @@ class CharacterForm(forms.ModelForm):
 
                 Row(
                 
-                Column('destreza', css_class='form-group col-md-6 col-md-offset-3'),
-                Column('inteligencia', css_class='form-group col-md-6 col-md-offset-3'),   
-                Column('sabedoria', css_class='form-group col-md-3'),
-                Column('carisma', css_class='form-group col-md-3'),         
+                Column('destreza', css_class='form-group col-sm-6 col-sm-offset-3'),
+                Column('inteligencia', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('sabedoria', css_class='form-group col-sm-3'),
+                Column('carisma', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
                 Row(
                 
-                Column('pontosDeVida', css_class='form-group col-md-6 col-md-offset-3'),
-                Column('iniciativa', css_class='form-group col-md-6 col-md-offset-3'),   
-                Column('deslocamento', css_class='form-group col-md-3'),
-                Column('tolerancia', css_class='form-group col-md-3'),          
+                Column('pontosDeVida', css_class='form-group col-sm-6 col-sm-offset-3'),
+                Column('iniciativa', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('deslocamento', css_class='form-group col-sm-3'),
+                Column('tolerancia', css_class='form-group col-sm-3'),          
                 css_class='form-row'
             ),
                 Row(
                 
-                Column('acrobacia', css_class='form-group col-md-6 col-md-offset-3'),
-                Column('atletismo', css_class='form-group col-md-6 col-md-offset-3'),   
-                Column('blefe', css_class='form-group col-md-3'),
-                Column('diplomacia', css_class='form-group col-md-3'),         
+                Column('acrobacia', css_class='form-group col-sm-6 col-sm-offset-3'),
+                Column('atletismo', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('blefe', css_class='form-group col-sm-3'),
+                Column('diplomacia', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
                 Row(
                 
-                Column('exploracao', css_class='form-group col-md-6 col-md-offset-3'),
-                Column('furtividade', css_class='form-group col-md-6 col-md-offset-3'),   
-                Column('historia', css_class='form-group col-md-3'),
-                Column('intimidacao', css_class='form-group col-md-3'),         
+                Column('exploracao', css_class='form-group col-sm-6 col-sm-offset-3'),
+                Column('furtividade', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('historia', css_class='form-group col-sm-3'),
+                Column('intimidacao', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
                 Row(
                 
-                Column('intuicao', css_class='form-group col-md-6 col-md-offset-3'),
-                Column('ladinagem', css_class='form-group col-md-6 col-md-offset-3'),   
-                Column('manha', css_class='form-group col-md-3'),
-                Column('natureza', css_class='form-group col-md-3'),         
+                Column('intuicao', css_class='form-group col-sm-6 col-sm-offset-3'),
+                Column('ladinagem', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('manha', css_class='form-group col-sm-3'),
+                Column('natureza', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
 
                 Row(
                 
-                Column('percepcao', css_class='form-group col-md-6 col-md-offset-3'),
-                Column('religiao', css_class='form-group col-md-6 col-md-offset-3'),   
-                Column('socorro', css_class='form-group col-md-3'),
+                Column('percepcao', css_class='form-group col-sm-6 col-sm-offset-3'),
+                Column('religiao', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('socorro', css_class='form-group col-sm-3'),
                 Column('rosto', css_class='form-group col-md-3'),        
                 css_class='form-row'
             ),
@@ -227,7 +227,7 @@ class AventuraForm(forms.ModelForm):
     class Meta:
         model = Aventura
         fields = '__all__'
-        exclude = ['author', 'create_date']
+        exclude = ['author', 'create_date', 'visitas']
 
     def __init__(self, *args, **kwargs):
         super(AventuraForm, self).__init__(*args, **kwargs)
@@ -253,6 +253,7 @@ class AventuraForm(forms.ModelForm):
             ),
             Row(
                 Column('npcs', css_class='form-group col-md-4 col-md-offset-4'),
+                Column('itens', css_class='form-group col-md-4 col-md-offset-4'),
               	
                 css_class='form-row'
             ),

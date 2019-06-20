@@ -2,6 +2,9 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 
+from django.core.validators import MinValueValidator
+from django.contrib import messages
+
 class Post(models.Model):
     """docstring for Post."""
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
@@ -162,6 +165,7 @@ class Aventura(models.Model):
     titulo = models.CharField(max_length = 100)
     aventura = models.TextField(default = "")
     create_date = models.DateTimeField(blank = True, null = True)
+    visitas = models.IntegerField(default = 0)
     GENERO = (
         ('TR','Terror'),
         ('MD', 'Medieval'),
@@ -170,7 +174,7 @@ class Aventura(models.Model):
         )
     genero = models.CharField(max_length = 2, choices = GENERO, default= 'TR' )
     itens = models.TextField()
-    numeroJogadores = models.IntegerField(default = 2)
+    numeroJogadores = models.IntegerField(default = 2, validators=[MinValueValidator(1, message = None  )])
     npcs = models.TextField()
 
 

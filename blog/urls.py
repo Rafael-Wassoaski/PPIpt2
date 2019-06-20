@@ -19,6 +19,7 @@ urlpatterns=[
 	path('aventura_details/<int:pk>', views.aventura_details, name='aventura_details'),
     # url(r'quiz/', views.quizList, name='quizList')
     path('contato/', views.contato, name='contato'),
+    path('vistas/', views.visitas, name = 'visitas')
     
 
     
