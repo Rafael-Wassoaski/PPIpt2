@@ -2,7 +2,8 @@
 {% load staticfiles %}
 
 {% block content %}
-	<div id = "post">
+<div id = "charDetails" class="p-3 mb-2 bg-primary text-white col-md-9 mt-5 rounded" style="margin: auto">
+	<div id = "post" class="mx-auto">
 		<h2>Titulo: {{quiz.title}}</h2>
 
 		<h3>Descrição: {{quiz.descricao}}</h3>
@@ -23,8 +24,9 @@
 			
 			{% endfor %}
 		</br>
-		<button type="submit">Responder</button>
+		<button type="submit" class="btn-success">Responder</button>
 	</form>
 	</div>
+</div>
 
 {% endblock %}

@@ -186,15 +186,25 @@ def contato(request):
 
             try:
                 send_mail(assunto, msg, emissor, ['meireles4815@gmail.com'])
+                print("deu")
             except BadHeaderError:
+                print("nao deu")
                 return HttpResponse("Erro")
             return redirect('blog:post_list')
             
     return render(request, 'blog/HTML/contato.html', {'form': email_form})
 
 
-def visitas(request, pk):
+def likes(request, pk):
     aventura = Aventura.objects.get(pk = pk)
+    aventura.likes = aventura.likes+1;
+    aventura.save();
+    return aventura.visitas
+
+def deslikes(request, pk):
+    aventura = Aventura.objects.get(pk = pk)
+    aventura.likes = aventura.likes-1;
+    aventura.save();
     return aventura.visitas
     
 

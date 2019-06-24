@@ -18,16 +18,16 @@ class CharacterForm(forms.ModelForm):
         self.helper.layout = Layout(
             Row(
                 
-                Column('name', css_class='form-group col-md-6 col-md-offset-3'),
-            	Column('classe', css_class='form-group col-md-6 col-md-offset-3'),   
+                Column('name', css_class='form-group col-md-3 col-md-offset-3'),
+            	Column('classe', css_class='form-group col-md-3 col-md-offset-3'),   
             	Column('raca', css_class='form-group col-md-3'),
             	Column('sexo', css_class='form-group col-md-3'),         
               	css_class='form-row'
             ),
              Row(
                 
-                Column('tamanho', css_class='form-group col-sm-6 col-sm-offset-3'),
-                Column('idade', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('tamanho', css_class='form-group col-sm-3 col-sm-offset-3'),
+                Column('idade', css_class='form-group col-sm-3 col-sm-offset-3'),   
                 Column('altura', css_class='form-group col-sm-3'),
                 Column('peso', css_class='form-group col-sm-3'),         
                 css_class='form-row'
@@ -44,7 +44,7 @@ class CharacterForm(forms.ModelForm):
 
                 Row(
                 
-                Column('tendencia', css_class='form-group col-md-6 col-md-offset-3'),
+               
                  
                 Column('forca', css_class='form-group col-sm-3'),
                 Column('constituicao', css_class='form-group col-sm-3'),         
@@ -52,46 +52,46 @@ class CharacterForm(forms.ModelForm):
             ),
 
                 Row(
-                    Column('idiomas', css_class='form-group col-md-6 col-md-offset-3'),  
+                    Column('idiomas', css_class='form-group col-md12 col-md-offset-12'),  
                     css_class='form-row'
-                    ),
+             ),
 
                 Row(
                 
-                Column('destreza', css_class='form-group col-sm-6 col-sm-offset-3'),
-                Column('inteligencia', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('destreza', css_class='form-group col-sm-3 col-sm-offset-3'),
+                Column('inteligencia', css_class='form-group col-sm-3 col-sm-offset-3'),   
                 Column('sabedoria', css_class='form-group col-sm-3'),
                 Column('carisma', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
                 Row(
                 
-                Column('pontosDeVida', css_class='form-group col-sm-6 col-sm-offset-3'),
-                Column('iniciativa', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('pontosDeVida', css_class='form-group col-sm-3 col-sm-offset-3'),
+                Column('iniciativa', css_class='form-group col-sm-3 col-sm-offset-3'),   
                 Column('deslocamento', css_class='form-group col-sm-3'),
                 Column('tolerancia', css_class='form-group col-sm-3'),          
                 css_class='form-row'
             ),
                 Row(
                 
-                Column('acrobacia', css_class='form-group col-sm-6 col-sm-offset-3'),
-                Column('atletismo', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('acrobacia', css_class='form-group col-sm-3 col-sm-offset-3'),
+                Column('atletismo', css_class='form-group col-sm-3 col-sm-offset-3'),   
                 Column('blefe', css_class='form-group col-sm-3'),
                 Column('diplomacia', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
                 Row(
                 
-                Column('exploracao', css_class='form-group col-sm-6 col-sm-offset-3'),
-                Column('furtividade', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('exploracao', css_class='form-group col-sm-3 col-sm-offset-3'),
+                Column('furtividade', css_class='form-group col-sm-3 col-sm-offset-3'),   
                 Column('historia', css_class='form-group col-sm-3'),
                 Column('intimidacao', css_class='form-group col-sm-3'),         
                 css_class='form-row'
             ),
                 Row(
                 
-                Column('intuicao', css_class='form-group col-sm-6 col-sm-offset-3'),
-                Column('ladinagem', css_class='form-group col-sm-6 col-sm-offset-3'),   
+                Column('intuicao', css_class='form-group col-sm-3 col-sm-offset-3'),
+                Column('ladinagem', css_class='form-group col-sm-3 col-sm-offset-3'),   
                 Column('manha', css_class='form-group col-sm-3'),
                 Column('natureza', css_class='form-group col-sm-3'),         
                 css_class='form-row'
@@ -99,10 +99,17 @@ class CharacterForm(forms.ModelForm):
 
                 Row(
                 
-                Column('percepcao', css_class='form-group col-sm-6 col-sm-offset-3'),
-                Column('religiao', css_class='form-group col-sm-6 col-sm-offset-3'),   
-                Column('socorro', css_class='form-group col-sm-3'),
-                Column('rosto', css_class='form-group col-md-3'),        
+                Column('percepcao', css_class='form-group col-sm-3 col-sm-offset-3'),
+                Column('religiao', css_class='form-group col-sm-3 col-sm-offset-3'),   
+                Column('socorro', css_class='form-group col-sm-3'), 
+                css_class='form-row'
+            ),
+
+                Row(
+                
+            
+                Column('rosto', css_class='form-group col-md-3'),      
+                Column('tendencia', css_class='form-group col-md-3 col-md-offset-3'),  
                 css_class='form-row'
             ),
 
@@ -110,8 +117,8 @@ class CharacterForm(forms.ModelForm):
             
             
         )
-        self.helper.add_input(Submit('submit', 'Criar'))
-        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+        self.helper.add_input(Submit('submit', 'Criar', css_class='btn-success'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger '))
         
 
 
@@ -158,7 +165,7 @@ class CharacterForm(forms.ModelForm):
 	            
 # 	        )
 # 	        self.helper.add_input(Submit('submit', 'Postar'))
-#        		self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+#        		self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger '))
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -175,22 +182,22 @@ class PostForm(forms.ModelForm):
         self.helper.layout = Layout(
             Row(
                 
-                Column('title', css_class='form-group col-md-4 col-md-offset-4'),
-                Column('categoria', css_class='form-group col-md-2'),
+                Column('title', css_class='form-group col-md-3 col-md-offset-3 mx-auto'),
+                Column('categoria', css_class='form-group col-md-3 col-md-offset-3 mx-auto'),
                 
                 css_class='form-row'
             ),
 
             Row(
-                Column('text', css_class='form-group col-md-6'),
+                Column('text', css_class='form-group col-md-12'),
                 css_class='form-row'
             ),
 
             
             
         )
-        self.helper.add_input(Submit('submit', 'Postar'))
-        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+        self.helper.add_input(Submit('submit', 'Postar', css_class='btn-success'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger '))
 
 
 
@@ -207,7 +214,7 @@ class RespostaForm(forms.ModelForm):
         self.helper.layout = Layout(
             Row(
                 
-                Column('resposta', css_class='form-group col-md-4 col-md-offset-4'),
+                Column('resposta', css_class='form-group col-md-4 col-md-offset-4 mx-auto'),
                
                 
                 css_class='form-row'
@@ -217,8 +224,8 @@ class RespostaForm(forms.ModelForm):
             
             
         )
-        self.helper.add_input(Submit('submit', 'Postar'))
-        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+        self.helper.add_input(Submit('submit', 'Responder', css_class='btn-success'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger '))
   
 
 
@@ -236,24 +243,24 @@ class AventuraForm(forms.ModelForm):
         self.helper.layout = Layout(
             Row(
                 
-                Column('titulo', css_class='form-group col-md-4 col-md-offset-4'),
+                Column('titulo', css_class='form-group col-md-8 col-md-offset-8 mx-auto'),
                     
                 css_class='form-row'
             ),
              Row(
-                Column('aventura', css_class='form-group col-md-4 col-md-offset-8'),
+                Column('aventura', css_class='form-group col-md-8 col-md-offset-8 mx-auto'),
                
                 css_class='form-row'
             ),
 
             Row(
-                Column('genero', css_class='form-group col-md-6 col-md-offset-6'),
-              	Column('numeroJogadores', css_class='form-group col-md-6 col-md-offset-6'),
+                Column('genero', css_class='form-group col-md-3 col-md-offset-3 mx-auto'),
+              	Column('numeroJogadores', css_class='form-group col-md-3 col-md-offset-3 mx-auto'),
                 css_class='form-row'
             ),
             Row(
-                Column('npcs', css_class='form-group col-md-4 col-md-offset-4'),
-                Column('itens', css_class='form-group col-md-4 col-md-offset-4'),
+                Column('npcs', css_class='form-group col-md-4 col-md-offset-4 mx-auto'),
+                Column('itens', css_class='form-group col-md-4 col-md-offset-4 mx-auto'),
               	
                 css_class='form-row'
             ),
@@ -262,8 +269,8 @@ class AventuraForm(forms.ModelForm):
             
             
         )
-        self.helper.add_input(Submit('submit', 'Postar'))
-        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+        self.helper.add_input(Submit('submit', 'Criar', css_class='btn-success'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger '))
  
 
 class ContatoForm(forms.Form):
@@ -277,12 +284,12 @@ class ContatoForm(forms.Form):
         self.helper.form_method = 'post'
         self.helper.layout = Layout(
             Row(
-                Column('emissor', css_class='form-group col-md-6'),
-                Column('assunto', css_class='form-group col-md-6'),
+                Column('emissor', css_class='form-group col-md-3 mx-auto'),
+                Column('assunto', css_class='form-group col-md-3 mx-auto'),
                 css_class='form-row'
             ),
             'msg'
         )
-        self.helper.add_input(Submit('submit', 'Enviar'))
-        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger float-right'))
+        self.helper.add_input(Submit('submit', 'Enviar', css_class='btn-success'))
+        self.helper.add_input(Reset('reset', 'Limpar', css_class='btn-danger '))
 

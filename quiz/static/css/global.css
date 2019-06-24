@@ -59,14 +59,17 @@ header h1{
 }
 
 
+
 #post{
 	background-color: white;
 	border-style: solid;
 	border-color: black;
+	color:black;
 	width: 50%;
 	margin-left: 2%;
 	padding-left: 20px;
 	padding-bottom: 5px;
+
 
 
 }

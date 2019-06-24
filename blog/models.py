@@ -31,7 +31,7 @@ class Post(models.Model):
 
 class RespostaPost(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
-    resposta = models.TextField();
+    resposta = models.TextField('Resposta');
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     repostaMain = models.ForeignKey('self', on_delete = models.CASCADE, null=True, blank = True)
     respResp = models.BooleanField(default = False)
@@ -48,7 +48,7 @@ class RespostaPost(models.Model):
 class Character(models.Model):
     """docstring for Character."""
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
-    name = models.CharField(max_length = 50)
+    name = models.CharField('Nome',max_length = 50)
     CLASSES = (
         ('BA','BARBARO'),
         ('LA', 'LADINO'),
@@ -56,8 +56,8 @@ class Character(models.Model):
         
 
         )
-    classe = models.CharField(max_length = 25)
-    tamanho = models.IntegerField(default = 0, blank = True, null = True)
+    classe = models.CharField('Classe',max_length = 25)
+    tamanho = models.IntegerField('Tamanho',default = 0, blank = True, null = True)
     RACAS = (
 
         ('HUM','HUMANO'),   
@@ -69,19 +69,19 @@ class Character(models.Model):
         ('ELA','ELADRIN'),
 
         )
-    raca = models.CharField(max_length = 15, choices = RACAS, default = 'HUMANO')
-    idade = models.IntegerField(default = 0)
+    raca = models.CharField('Raça',max_length = 15, choices = RACAS, default = 'HUMANO')
+    idade = models.IntegerField('Idade',default = 0)
     SEX = (
         ('M', 'Masculino'),
         ('F', 'Feminino'),
     )
-    sexo = models.CharField(max_length = 1, choices = SEX)
-    altura = models.FloatField(default = 0)
-    peso = models.FloatField(default = 0)
-    olhos = models.CharField(max_length = 20)
-    cabelo = models.CharField(max_length = 30)
-    pele = models.CharField(max_length = 30)
-    divindade = models.CharField(max_length = 50, default='', blank = True, null=True)
+    sexo = models.CharField('Sexo',max_length = 1, choices = SEX)
+    altura = models.FloatField('Altura',default = 0)
+    peso = models.FloatField('Peso',default = 0)
+    olhos = models.CharField('Olhos',max_length = 20)
+    cabelo = models.CharField('Cabelo',max_length = 30)
+    pele = models.CharField('Pele',max_length = 30)
+    divindade = models.CharField('Divindade',max_length = 50, default='', blank = True, null=True)
 
     TENDENCIA = (
         ('LG', 'LAWFUL GOOD'),
@@ -94,34 +94,34 @@ class Character(models.Model):
         ('NE', 'NEUTRAL EVIL'),
         ('CE', 'CHAOTIC EVIL'),
         )
-    tendencia = models.CharField(max_length=2, choices = TENDENCIA, default='LG')
-    idiomas = models.TextField(default='', null = True, blank = True)
-    forca = models.IntegerField(default = 0)
-    constituicao = models.IntegerField(default = 0)
-    destreza = models.IntegerField(default = 0)  
-    inteligencia = models.IntegerField(default = 0)
-    sabedoria = models.IntegerField(default = 0)
-    carisma = models.IntegerField(default = 0)
-    pontosDeVida = models.IntegerField(default = 5)
-    iniciativa = models.IntegerField(default = 0)
-    deslocamento = models.IntegerField(default = 2)
-    rosto = models.ImageField(upload_to='images/', blank = True,default = None)
-    acrobacia = models.IntegerField(default = 0)
-    atletismo = models.IntegerField(default = 0)
-    blefe = models.IntegerField(default = 0)
-    diplomacia = models.IntegerField(default = 0)
-    exploracao = models.IntegerField(default = 0)
-    furtividade = models.IntegerField(default = 0)
-    historia = models.IntegerField(default = 0)
-    intimidacao = models.IntegerField(default = 0)
-    intuicao = models.IntegerField(default = 0)
-    ladinagem = models.IntegerField(default = 0)
-    manha = models.IntegerField(default = 0)
-    natureza = models.IntegerField(default = 0)
-    percepcao = models.IntegerField(default = 0)
-    religiao = models.IntegerField(default = 0)
-    socorro = models.IntegerField(default = 0)
-    tolerancia = models.IntegerField(default = 0)
+    tendencia = models.CharField('Tendência',max_length=2, choices = TENDENCIA, default='LG')
+    idiomas = models.TextField('Idiomas',default='', null = True, blank = True)
+    forca = models.IntegerField('Força',default = 0)
+    constituicao = models.IntegerField('Constituição',default = 0)
+    destreza = models.IntegerField('Destreza',default = 0)  
+    inteligencia = models.IntegerField('Inteligência',default = 0)
+    sabedoria = models.IntegerField('Sabedoria',default = 0)
+    carisma = models.IntegerField('Carisma',default = 0)
+    pontosDeVida = models.IntegerField('Pontos de Vida',default = 5)
+    iniciativa = models.IntegerField('Iniciativa',default = 0)
+    deslocamento = models.IntegerField('Deslocamento',default = 2)
+    rosto = models.ImageField('Rosto',upload_to='images/', blank = True,default = None)
+    acrobacia = models.IntegerField('Acrobacia',default = 0)
+    atletismo = models.IntegerField('Atletismo',default = 0)
+    blefe = models.IntegerField('Blefe',default = 0)
+    diplomacia = models.IntegerField('Diplomacia',default = 0)
+    exploracao = models.IntegerField('Exploração',default = 0)
+    furtividade = models.IntegerField('Furtividade',default = 0)
+    historia = models.IntegerField('Historia',default = 0)
+    intimidacao = models.IntegerField('Intimidação',default = 0)
+    intuicao = models.IntegerField('Intuição',default = 0)
+    ladinagem = models.IntegerField('Ladinagem',default = 0)
+    manha = models.IntegerField('Manha',default = 0)
+    natureza = models.IntegerField('Naruteza',default = 0)
+    percepcao = models.IntegerField('Percepção',default = 0)
+    religiao = models.IntegerField('Religião',default = 0)
+    socorro = models.IntegerField('Socorro',default = 0)
+    tolerancia = models.IntegerField('Tolerância',default = 0)
 
 
 
@@ -165,7 +165,8 @@ class Aventura(models.Model):
     titulo = models.CharField(max_length = 100)
     aventura = models.TextField(default = "")
     create_date = models.DateTimeField(blank = True, null = True)
-    visitas = models.IntegerField(default = 0)
+    likes = models.IntegerField(default = 0);
+    deslikes = models.IntegerField(default = 0);
     GENERO = (
         ('TR','Terror'),
         ('MD', 'Medieval'),
