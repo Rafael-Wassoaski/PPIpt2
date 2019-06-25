@@ -60,6 +60,7 @@ def createAventura(request):
 
     if request.method == "POST":
         aventura = AventuraForm(request.POST)
+        print(aventura.errors)
         if aventura.is_valid():
             aventura = aventura.save(commit = False)
             aventura.author = request.user

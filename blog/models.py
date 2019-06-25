@@ -165,8 +165,8 @@ class Aventura(models.Model):
     titulo = models.CharField(max_length = 100)
     aventura = models.TextField(default = "")
     create_date = models.DateTimeField(blank = True, null = True)
-    likes = models.IntegerField(default = 0);
-    deslikes = models.IntegerField(default = 0);
+    likes = models.IntegerField(default = 0, blank = True);
+    deslikes = models.IntegerField(default = 0, blank = True);
     GENERO = (
         ('TR','Terror'),
         ('MD', 'Medieval'),

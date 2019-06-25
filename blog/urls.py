@@ -19,7 +19,8 @@ urlpatterns=[
 	path('aventura_details/<int:pk>', views.aventura_details, name='aventura_details'),
     # url(r'quiz/', views.quizList, name='quizList')
     path('contato/', views.contato, name='contato'),
-    # path('like/pk/', views.like, name = 'like')
+    path('like/<pk>/', views.likes, name = 'like'),
+    path('unlike/<pk>/', views.deslikes, name = 'deslikes'),
     
 
     
